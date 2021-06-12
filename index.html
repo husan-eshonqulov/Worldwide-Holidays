@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Worldwide Holidays</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Mukta:wght@700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Martel:wght@700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="width-con mx-auto mt-5">
+        <h2 class="text-center mt-2 mb-4">Worlwide &nbsp; &nbsp; Holidays</h2>
+        <form>
+          <div class="row align-items-center mb-3">
+            <div class="col-sm-12 col-md-3 col-lg-4 my-1">
+              <label for="country" class="my-0 label-sty">Country: </label>
+            </div>
+            <div class="col-sm-12 col-md-9 col-lg-8 my-1">
+              <input
+                class="form-control input-sty"
+                type="text"
+                id="country"
+                list="countries"
+                placeholder="Enter any country    (uz - ``Uzbekistan``)"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="row align-items-center mb-3">
+            <div class="col-sm-12 col-md-3 col-lg-4 my-1">
+              <label for="year" class="my-0 label-sty">Year: </label>
+            </div>
+            <div class="col-sm-12 col-md-9 col-lg-8 my-1">
+              <input
+                class="form-control input-sty"
+                type="number"
+                id="year"
+                placeholder="Enter any year"
+                min="1992"
+                required
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-3 col-lg-4"></div>
+            <div class="col-sm-12 col-md-9 col-lg-8">
+              <button class="btn btn-primary w-100 submit-btn mb-5" id="submit">
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <div id="output-div"></div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+      function clickListener(event) {
+        const inputCountry = document.getElementById("country").value;
+        const inputYear = document.getElementById("year").value;
+        const submit = document.getElementById("submit");
+        const output = document.getElementById("output-div");
+        output.innerHTML = "";
+
+        const response = executeSearch(inputCountry, inputYear);
+        response.then((result) => (output.innerHTML = result));
+        event.preventDefault();
+      }
+      document
+        .getElementById("submit")
+        .addEventListener("click", clickListener);
+    </script>
+  </body>
+</html>
